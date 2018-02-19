@@ -31,7 +31,7 @@ Values found:
 
 40585
 
-Which can be used to conclude that the cases presented by Vsauce are not the only known, but the only ones that exist.
+Which can be used to conclude that the cases presented by Vsauce are not the only known, but the only ones that exist, as stated on the tweet.
 
 Sorry for any misspellings, english is not my main language.
 
