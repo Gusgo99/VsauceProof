@@ -17,7 +17,6 @@ Solving the equation we get a number between 7 and 8, which can be rounded up in
 
 After running the said program, the result presented in the screen is:
 
-------------------------------------------------------
 Starting to search possible cases in base 10 [/]
 Searched from n = 1 to log(n + 1) / log(10) = 8.
 Values found:
@@ -25,11 +24,10 @@ Values found:
 2
 145
 40585
-------------------------------------------------------
 
 Which can be used to conclude that the cases presented by Vsauce are not the only known, but the only ones that exist.
 
 Sorry for any misspellings, english is not my main language.
 
-Also, in case anyone discord of my proof or think it can be presented in a cleaner manner, feel free to point out.
-Corrections to the .cpp file are also be welcome.
+Also, in case anyone disagree with my proof or think it can be presented in a cleaner manner, feel free to point out.
+Corrections to the .cpp file are also be welcome and sorry if you don't like my C++ code, but I haven't writen in C++ for some time.
