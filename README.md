@@ -18,17 +18,11 @@ Solving the equation we get a number between 7 and 8, which can be rounded up in
 After running the said program, the result presented in the screen is:
 
 Starting to search possible cases in base 10 [/]
-
 Searched from n = 1 to log(n + 1) / log(10) = 8.
-
 Values found:
-
 1
-
 2
-
 145
-
 40585
 
 Which can be used to conclude that the cases presented by Vsauce are not the only known, but the only ones that exist.
