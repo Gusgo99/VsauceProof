@@ -1,10 +1,3 @@
-/* Proof that we only need to calculate up to 10^7:
- * 
- * If the number is only digits in a number is the number 9, we know that
- * 
- * 
- */
-
 /* 
  * File:   main.cpp
  * Author: Gustavo Pacola Gonçalves (@Gusgo99)
