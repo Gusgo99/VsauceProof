@@ -1,5 +1,5 @@
 # VsauceProof
-Proof that the only numbers wich can be writen as a sum of the factorial of its digits are 1, 2, 145 and 40585
+Proof that the only numbers which can be writen as a sum of the factorial of its digits are 1, 2, 145 and 40585
 
 It's about a tweet from the youtuber Vsauce which made an affirmation about the fact but presented no proofs, which made me a little currious. The tweet can be found on this link:
 https://twitter.com/tweetsauce/status/965259567322943490
