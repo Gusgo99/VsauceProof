@@ -1,3 +1,10 @@
+/* Proof that we only need to calculate up to 10^7:
+ * 
+ * If the number is only digits in a number is the number 9, we know that
+ * 
+ * 
+ */
+
 /* 
  * File:   main.cpp
  * Author: Gustavo Pacola Gonçalves (@Gusgo99)
@@ -23,7 +30,7 @@ char loading[] = {'/', '-', '\\', '-'};                                         
 
 typedef struct cases {                                                          // An element of the list of found cases
     unsigned int value;                                                         // Stores the value founded
-    cases *next;                                                                // Stores the next element of the list
+    cases *next;                                                                // Pointer to the next element of the list
     
 };
 
@@ -35,15 +42,14 @@ int main() {
     
     /* I was expecting it would take some time to run, so I thought it would be
      * better to use a lookup table instead of doing the arithmethic every time,
-     * but after running I don't think this was necessary considering the times
+     * but after running I don't think this was necessary considering the time
      * it takes to run.*/
     powers[0] = 1;                                                              // Set 10^0 = 1
-    for(int i = 0; i != _maxDigits; i++) {
+    digits[0] = 0;
+    for(int i = 1; i != _maxDigits; i++) {
         digits[i] = 0;                                                          // Set all digits of the number as 0 to begin the testing
-        if(i != 0) {
-            powers[i] = powers[i - 1] * 10;                                     // Calculate the powers of 10 from 1 to the maximum number of digits
-            
-        }
+        powers[i] = powers[i - 1] * 10;                                     // Calculate the powers of 10 from 1 to the maximum number of digits
+        
     }
     
     while(digits[_maxDigits - 1] != (_baseUsed)) {                              // Keep calculating if the conditions are met until it reaches the maximum defined number
@@ -97,7 +103,7 @@ int main() {
     }
     
     current = &first;                                                           // Set the first element of the list as the current
-    cout << endl << "Searched from n = 1 to log(n) / log(10) = ";
+    cout << endl << "Searched from n = 1 to n = 10^";
     cout << _maxDigits << "." << endl;
     cout << "Values found: " << endl;
     
@@ -122,4 +128,3 @@ int main() {
 
     return 0;
 }
-
