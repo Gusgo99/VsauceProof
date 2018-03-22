@@ -18,7 +18,7 @@ unsigned int powers[_maxDigits];                                                
 unsigned int number;                                                            // The number being tested
 unsigned int sum;                                                               // The sum of the factorial of each number
 
-char loading[] = {'/', '-', '\\', '-'};                                         // Just the loading "animation?"
+char loading[] = {'/', '-', '\\', '|'};                                         // Just the loading "animation?"
 
 struct cases {                                                                  // An element of the list of found cases
     unsigned int value;                                                         // Stores the value founded
