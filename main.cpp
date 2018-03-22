@@ -12,8 +12,7 @@
 
 using namespace std;
 
-unsigned int factorial[_baseUsed] =                                             // Array stores all the values from 0! to 9!, to prevent calculating during the execution of the program
-    {1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880};
+unsigned int factorial[_baseUsed];                                              // Array stores all the values from 0! to 9!, to prevent calculating during runtime
 unsigned int digits[_maxDigits];                                                // Array used to store the value of each digit
 unsigned int powers[_maxDigits];                                                // The value of 10 to the power of the the index accessed
 unsigned int number;                                                            // The number being tested
@@ -21,7 +20,7 @@ unsigned int sum;                                                               
 
 char loading[] = {'/', '-', '\\', '-'};                                         // Just the loading "animation?"
 
-typedef struct cases {                                                          // An element of the list of found cases
+struct cases {                                                                  // An element of the list of found cases
     unsigned int value;                                                         // Stores the value founded
     cases *next;                                                                // Pointer to the next element of the list
     
@@ -30,23 +29,34 @@ typedef struct cases {                                                          
 int main() {
     cases first;                                                                // First element of the list of cases found
     cases *current = &first;                                                    // Pointer to the element being used on the list
-    first.value = 0;                                                            // Clear the first value of the list
+    first.value = 1;                                                            // Clear the first value of the list
     first.next = NULL;                                                          // Make sure the pointer is not pointing to anywhere it souldn't be
     
     /* I was expecting it would take some time to run, so I thought it would be
      * better to use a lookup table instead of doing the arithmethic every time,
-     * but after running I don't think this was necessary considering the time
-     * it takes to run.*/
-    powers[0] = 1;                                                              // Set 10^0 = 1
+     * but after running it I don't think this was necessary considering the
+     * time it takes to run, at least in base 10.*/
+    cout << "Creating table to speed up the verifications" << endl;
+    cout << "Creating table of powers of " << _baseUsed << endl;
+    powers[0] = 1;                                                              // Set x^0 = 1
     digits[0] = 0;
     for(int i = 1; i != _maxDigits; i++) {
         digits[i] = 0;                                                          // Set all digits of the number as 0 to begin the testing
-        powers[i] = powers[i - 1] * 10;                                     // Calculate the powers of 10 from 1 to the maximum number of digits
+        powers[i] = powers[i - 1] * _baseUsed;                                  // Calculate the powers of the base used from 1 to the maximum number of digits
         
     }
     
+    cout << "Creating table of factorials" << endl;
+    factorial[0] = 1;
+    for(int i = 1; i != _baseUsed; i++) {
+        factorial[i] = factorial[i - 1] * i;                                    // Calculate n factorial from n = 1 to the maximum number a digit can assume
+        
+    }
+    
+    cout << endl;
+    
     while(digits[_maxDigits - 1] != (_baseUsed)) {                              // Keep calculating if the conditions are met until it reaches the maximum defined number
-        for(int i = 0; i != 6; i++) {                                           // Just keep a bar rotating to show the program is running
+        for(int i = 0; i != 6; i++) {                                           // Just keep a bar rotating to show the program is still running
             if(digits[i] != 0) {
                 break;
                 
@@ -61,10 +71,10 @@ int main() {
         }
         
         digits[0]++;                                                            // Increment the rightmost digit
-        for(int i = 0; i != (_maxDigits - 1); i++) {                            // Check if any digit is bigger than 9,
-            if(digits[i] == _baseUsed) {                                        // if it is, increment the digit to its left
-                digits[i] = 0;
-                digits[i + 1]++;
+        for(int i = 0; i != (_maxDigits - 1); i++) {                            // Check if any digit is bigger than the maximum value allowed by the base
+            if(digits[i] == _baseUsed) {                                        // If it is,
+                digits[i] = 0;                                                  // set the digit to zero
+                digits[i + 1]++;                                                // and increment the digit to its left
                 
             }
         }
@@ -81,23 +91,16 @@ int main() {
             }
         }
         if(sum == number) {                                                     // Verify if there is a match
-            if(current -> value != 0) {                                         // Verify if the current element of the list has been writen
-                current -> next = new cases;                                    // If yes, create a new elemento to the list
-                current = current -> next;                                      // Set the new elemente as the current
-                current -> value = number;                                      // Write the value to the list
-                current -> next = NULL;                                         // Mark this as the last element
-                
-            }
-            else {                                                              // If not, add the element to the list
-                current -> value = number;
-                
-            }
+            current -> next = new cases;                                        // If yes, create a new elemento to the list
+            current = current -> next;                                          // Set the new elemente as the current
+            current -> value = number;                                          // Write the value to the list
+            current -> next = NULL;                                             // Mark this as the last element
         }
     }
     
     current = &first;                                                           // Set the first element of the list as the current
-    cout << endl << "Searched from n = 1 to n = 10^";
-    cout << _maxDigits << "." << endl;
+    cout << endl << "Searched from n = 1 to n = " << _baseUsed << "^";
+    cout << _maxDigits << endl;
     cout << "Values found: " << endl;
     
     while(true) {                                                               // Prints all the elements on the list
