@@ -39,7 +39,7 @@ int main() {
     cout << "Creating table to speed up the verifications" << endl;
     cout << "Creating table of powers of " << _baseUsed << endl;
     powers[0] = 1;                                                              // Set x^0 = 1
-    digits[0] = 0;
+    digits[0] = 1;
     for(int i = 1; i != _maxDigits; i++) {
         digits[i] = 0;                                                          // Set all digits of the number as 0 to begin the testing
         powers[i] = powers[i - 1] * _baseUsed;                                  // Calculate the powers of the base used from 1 to the maximum number of digits
