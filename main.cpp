@@ -15,8 +15,8 @@ using namespace std;
 unsigned int factorial[_baseUsed];                                              // Array stores all the values from 0! to 9!, to prevent calculating during runtime
 unsigned int digits[_maxDigits];                                                // Array used to store the value of each digit
 unsigned int powers[_maxDigits];                                                // The value of 10 to the power of the the index accessed
-unsigned int number;                                                            // The number being tested
-unsigned int sum;                                                               // The sum of the factorial of each number
+unsigned long long int number;                                                  // The number being tested
+unsigned long long int sum;                                                     // The sum of the factorial of each number
 
 char loading[] = {'/', '-', '\\', '|'};                                         // Just the loading "animation?"
 
